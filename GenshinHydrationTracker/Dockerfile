@@ -28,4 +28,5 @@ RUN dotnet publish "./GenshinHydrationTracker.csproj" -c $BUILD_CONFIGURATION -o
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "GenshinHydrationTracker.dll"]
+
+ENTRYPOINT ["dotnet", "DanielKlement.Services.GenshinHydrationTracker.dll"]
