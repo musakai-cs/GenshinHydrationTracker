@@ -1,0 +1,11 @@
+@HostAddress = http://localhost:32770
+
+### Zapnutí časovače pro Genshin
+POST {{HostAddress}}/GenshinTracker/start
+Accept: application/json
+X-API-Key: ahoj
+
+### Vypnutí časovače
+POST {{HostAddress}}/GenshinTracker/stop
+Accept: application/json
+X-API-Key: ahoj
