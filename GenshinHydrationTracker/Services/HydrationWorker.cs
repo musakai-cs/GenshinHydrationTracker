@@ -17,7 +17,7 @@ public class DiscordHydrationWorker(IConfiguration coniguration)
 
     public void StartHydrationReminders()
     {
-        if (_cts != null) return;
+        if (_cts is not null) return;
 
         _cts = new CancellationTokenSource();
         _ = RunLoopAsync(_cts.Token);
@@ -29,6 +29,8 @@ public class DiscordHydrationWorker(IConfiguration coniguration)
         _cts?.Dispose();
         _cts = null;
     }
+
+    public bool IsHydrationRemindersRunning() => _cts is not null && !_cts.IsCancellationRequested;
 
     private async Task RunLoopAsync(CancellationToken token)
     {

@@ -29,5 +29,13 @@ namespace GenshinHydrationTracker.Controllers
             _worker.StopHydrationReminders();
             return Ok(new { message = "Genshin vypnut, časovač zastaven." });
         }
+
+        [HttpGet("status")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult GetStatus()
+        {
+            var isRunning = _worker.IsHydrationRemindersRunning();
+            return Ok(new { status = isRunning ? "Časovač běží." : "Časovač zastaven." });
+        }
     }
 }
