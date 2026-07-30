@@ -9,3 +9,8 @@ X-API-Key: ahoj
 POST {{HostAddress}}/GenshinTracker/stop
 Accept: application/json
 X-API-Key: ahoj
+
+### Získání aktuálního stavu časovače
+GET {{HostAddress}}/GenshinTracker/status
+Accept: application/json
+X-API-Key: ahoj
