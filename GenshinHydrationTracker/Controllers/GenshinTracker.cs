@@ -12,7 +12,7 @@ namespace GenshinHydrationTracker.Controllers
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public class GenshinTrackerController(DiscordHydrationWorker worker) : ControllerBase
     {
-        private readonly DiscordHydrationWorker _worker = worker ?? throw new NullReferenceException(nameof(worker));
+        private readonly DiscordHydrationWorker _worker = worker ?? throw new ArgumentNullException(nameof(worker));
 
         [HttpPost("start")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -3,13 +3,13 @@ using System.Text.Json;
 
 namespace GenshinHydrationTracker.Services;
 
-public class DiscordHydrationWorker(IConfiguration coniguration)
+public class DiscordHydrationWorker(IConfiguration configuration)
 {
-    private readonly string _webhookUrl = coniguration["DISCORD_WEBHOOK_URL"] ?? throw new NullReferenceException(nameof(coniguration));
-    private readonly string _discordUserIdPin = coniguration["DISCORD_USER_ID_PIN"] ?? throw new NullReferenceException(nameof(coniguration));
+    private readonly string _webhookUrl = configuration["DISCORD_WEBHOOK_URL"] ?? throw new ArgumentNullException(nameof(configuration));
+    private readonly string _discordUserIdPin = configuration["DISCORD_USER_ID_PIN"] ?? throw new ArgumentNullException(nameof(configuration));
 
     private readonly uint _intervalMinutes =
-        uint.TryParse(coniguration["REMINDER_INTERVAL_MINUTES"], out var minutes) && minutes > 0
+        uint.TryParse(configuration["REMINDER_INTERVAL_MINUTES"], out var minutes) && minutes > 0
             ? minutes
             : throw new InvalidOperationException("REMINDER_INTERVAL_MINUTES musí být kladné číslo!");
 

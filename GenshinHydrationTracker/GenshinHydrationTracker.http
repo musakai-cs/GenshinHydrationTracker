@@ -1,4 +1,4 @@
-@HostAddress = http://localhost:32770
+@HostAddress = http://localhost:5130
 
 ### Zapnutí časovače pro Genshin
 POST {{HostAddress}}/GenshinTracker/start

@@ -19,7 +19,7 @@ namespace GenshinHydrationTracker.Attributes
             var configuration = context.HttpContext.RequestServices.GetRequiredService<IConfiguration>();
             var apiKey = configuration["API_SECRET_KEY"];
 
-            if (apiKey is not null && !apiKey.Equals(extractedApiKey))
+            if (apiKey is null || !apiKey.Equals(extractedApiKey.ToString()))
             {
                 context.Result = new UnauthorizedObjectResult("Neplatný API Klíč.");
                 return;
